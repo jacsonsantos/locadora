@@ -1,0 +1,8 @@
+.box{position: relative; width: 400px; margin: auto;margin-top: 15%;}
+.logo{position: relative;width: 80px;height: 60; margin: 1em auto;}
+.text-right{text-align: right;display: block;}
+button.btn-block{margin-top:15px !important;}
+input.form-control{margin-bottom:10px !important;}
+.m-top-10{margin-top:10px !important;}
+.bg-blue{background-color: #008cff;}
+.text-white{color: #fff;}
