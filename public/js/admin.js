@@ -10,4 +10,6 @@ $(function() {
             // Animation complete.
         });
     });
+    $("#ano").mask("9999",{placeholder:"yyyy"});
+    $("#duracao").mask("9hr 99min");
 });

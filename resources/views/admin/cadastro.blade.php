@@ -23,6 +23,33 @@
             </div>
         </div>
         <div class="row m-top-15">
+            <div class="col col-md-2 col-md-offset-1">
+                <label for="Volume">Volume:</label>
+                <input type="text" name="volume" value="" required class="form-control">
+
+            </div>
+            <div class="col col-md-2">
+                <label for="Faixa Etária">Faixa Etária:</label>
+                <select type="text" name="faixa" value="" required class="form-control">
+                    <option value="">Selecione a faixa etária</option>
+                    <option value="L">Livre</option>
+                    <option value="12">12</option>
+                    <option value="14">14</option>
+                    <option value="16">16</option>
+                    <option value="18">18</option>
+
+                </select>                
+            </div>
+            <div class="col col-md-2">
+                <label for="Ano">Ano:</label>
+                <input type="text" name="ano" id="ano" data-placeholder="yyyy" value="" required class="form-control">                
+            </div> 
+            <div class="col col-md-2">
+            <label for="Duração">Duração:</label>
+                <input type="text" name="duracao" id="duracao" value="" required class="form-control"> 
+            </div>
+        </div>
+        <div class="row m-top-15">
             <div class="col col-md-9 col-md-offset-1">
                 <label for="Sinopse">Sinopse:</label>
             <textarea name="sinopse" id="" required rows="6" class="form-control">{{ $filme->txt_sinopse_filme }}</textarea>
@@ -31,7 +58,10 @@
                 <label for="Trailer">Link do Trailer:</label>
             <input type="text" name="trailer" value="{{ $filme->str_trailer_filme }}" required class="form-control">
             </div>
-            <div class="col col-md-9 col-md-offset-1">
+            
+        </div>
+        <div class="row">
+            <div class="col col-md-5 col-md-offset-1">
                 <label for="Capa">Capa:</label>
                 @if($filme->thumbnail)
                 <div class="thumb">
@@ -40,7 +70,12 @@
                 @endif
             <input type="file" accept= image/* name="capa" required>
             </div>
+            <div class="col col-md-6">
+                <label for="Anexo">Anexo:</label>
+                <input type="file" name="anexo" required>
+            </div>            
         </div>
+
     <div class="container m-top-15">
         <div class="row">
             <div class="col col-md-2 col-md-offset-1">

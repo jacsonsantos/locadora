@@ -18,7 +18,7 @@
                         <img src="http://rs141.pbsrc.com/albums/r73/salem21_2006/homer-simpson.gif~c200" alt="" class="">
                     </div>
                     <div class="name-user">
-                        <h1 class="text-center">Home</h1>
+                        <h1 class="text-center">Homer</h1>
                         <hr class="hr">
                     </div>
                     <div class="menu">
@@ -44,6 +44,7 @@
             </div>
         </div>
     <script src="/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/js/jquery.maskedinput.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
     <script src="/js/admin.js"></script>
     </body>
