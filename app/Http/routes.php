@@ -18,3 +18,7 @@ Route::post('/admin/add/movie','AdminController@postAddMovie');
 Route::post('/admin/add/movie/{id}','AdminController@postAddMovie');
 Route::get('/admin/add/movie/{id}','AdminController@getAddMovie');
 Route::get('/admin/delete/{id}','AdminController@getDelete');
+Route::get('/admin/register','AdminController@getCreate');
+Route::post('/admin/register','AdminController@postCreate');
+Route::get('/admin/users','AdminController@getUsers');
+Route::auth();

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Filme;
+use App\User;
+use App\Usuario;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -12,6 +14,11 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function getIndex(Request $request)
     {
         $filmes = new Filme();
@@ -23,6 +30,7 @@ class AdminController extends Controller
 
     	return view('admin.index',compact('filmes','categorias'));
     }
+
     public function getAddMovie(Request $request,$id = null)
     {
         $filme = [];
@@ -37,6 +45,7 @@ class AdminController extends Controller
 
     	return view('admin.cadastro',compact('categorias','filme'));
     }
+
     public function postAddMovie(Request $request)
     {
     	$filme = new Filme();
@@ -54,6 +63,7 @@ class AdminController extends Controller
         }
     	return redirect('/admin')->withErrors(['Success'=>'Salvo com sucesso!']);
     }
+
     public function getDelete(Request $request, $id = null)
     {
         if (is_null($id)) {
@@ -64,5 +74,35 @@ class AdminController extends Controller
         $filme->delete();
 
         return redirect('/admin')->withErrors(['Success' => 'Filme apagado com sucesso!']);
+    }
+
+    public function getCreate()
+    {
+        return view('admin.register');
+    }
+
+    public function postCreate(Request $request)
+    {
+        $data = $request->all();
+        if (User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+        ])) {
+            return redirect('/admin/register')->withErrors(['success'=>'Usuario criado com sucesso!']);
+        }
+
+        return redirect('/admin/register')->withErrors(['error'=>'Erro ao Criar Usuario']);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getUsers(Request $request)
+    {
+        $users = new Usuario();
+
+        return view('admin.users',compact('users'));
     }
 }
