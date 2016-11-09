@@ -19,6 +19,8 @@
 </header>
 <section class="m-top-15">
     <form action="" method="post" enctype="multipart/form-data">
+        {{ csrf_field() }}
+        <input type="hidden" value="{{ $filme->int_filme_id}}" name="int_filme_id">
         <div class="row">
             <div class="col col-md-6 col-md-offset-1">
                 <label for="Nome do Filme">Nome do Filme:</label>
@@ -76,15 +78,14 @@
             <div class="col col-md-5 col-md-offset-1">
                 <label for="Capa">Capa:</label>
                 @if($filme->thumbnail)
-                <div class="thumb">
-                    <img class="img-responsive" src="{{ public_path().'/uploads/'.$filme->thumbnail }}" alt="{{$filme->str_titulo_filme }}">
-                </div>
+                    <br>Abrir Capa: <a style="color:#761c19;" target="_blank" href="{{ '/uploads/'.$filme->thumbnail }}" title="{{$filme->str_titulo_filme }}">{{$filme->str_titulo_filme }}</a>
+                    <br>
                 @endif
-            <input type="file" accept= image/* name="capa" required>
+            <input type="file" accept= image/* name="capa">
             </div>
             <div class="col col-md-6">
                 <label for="Anexo">Anexo:</label>
-                <input type="file" name="anexo" required>
+                <input type="file" name="anexo">
             </div>            
         </div>
 

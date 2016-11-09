@@ -12,6 +12,10 @@
 */
 
 Route::get('/','SearchController@getIndexSearch');
+Route::get('/api/v1/search','SearchController@getSearch');
+Route::get('/api/v1/search/{id}','SearchController@getViewSearch');
+Route::get('/api/v1/search/category/{id}/','SearchController@getCatSearch');
+Route::get('/api/v1/category','SearchController@getCategory');
 Route::get('/admin','AdminController@getIndex');
 Route::get('/admin/add/movie','AdminController@getAddMovie');
 Route::post('/admin/add/movie','AdminController@postAddMovie');

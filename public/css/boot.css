@@ -6,3 +6,10 @@ input.form-control{margin-bottom:10px !important;}
 .m-top-10{margin-top:10px !important;}
 .bg-blue{background-color: #008cff;}
 .text-white{color: #fff;}
+.value-destaque{position: absolute;}
+.img-destaque img{width: 100px;height: 100px;}
+.img-destaque span{color: rgba(255,0,0,.8);}
+.img-destaque:hover img{opacity: .5 !important;}
+/*HELPs*/
+.off{display: none;}
+.col-xs-6{padding: 1em 0 !important;padding-left: 1em !important;}

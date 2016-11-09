@@ -48,20 +48,34 @@ class AdminController extends Controller
 
     public function postAddMovie(Request $request)
     {
-    	$filme = new Filme();
-
+    	if ($request->input('int_filme_id')) {
+            $filme = Filme::find($request->input('int_filme_id'));
+        } else {
+            $filme = new Filme();
+        }
+    
     	$filme->str_titulo_filme = $request->input('filme');
     	$filme->int_categoria_id = $request->input('categoria');
     	$filme->txt_sinopse_filme = $request->input('sinopse');
-    	$capa = $request->file('capa');
-        $newName = md5($capa->getClientOriginalName());
-        $ext = $capa->getClientOriginalExtension();
-    	$filme->thumbnail = $newName.'.'.$ext;
-    	$filme->str_trailer_filme = $request->input('trailer');
-    	if (!$filme->save() || !$capa->move(public_path().'/uploads',$newName)){
+
+        if (!empty($request->file('capa'))) {
+            $capa = $request->file('capa');
+            $newName = md5($capa->getClientOriginalName());
+            $ext = $capa->clientExtension();
+            $filme->thumbnail = $newName.'.'.$ext;
+            
+            if (!$capa->move(public_path().'/uploads',$newName.'.'.$ext)){
+                return redirect()->back()->withErrors(['Error'=>'Erro ao salvar filme']);
+            }
+        }
+    	
+        $filme->str_trailer_filme = $request->input('trailer');
+    	
+        if (!$filme->save()){
     	    return redirect()->back()->withErrors(['Error'=>'Erro ao salvar filme']);
         }
-    	return redirect('/admin')->withErrors(['Success'=>'Salvo com sucesso!']);
+    	
+        return redirect('/admin')->withErrors(['Success'=>'Salvo com sucesso!']);
     }
 
     public function getDelete(Request $request, $id = null)
@@ -102,6 +116,8 @@ class AdminController extends Controller
     public function getUsers(Request $request)
     {
         $users = new Usuario();
+
+        $users = $users->all();
 
         return view('admin.users',compact('users'));
     }

@@ -61,7 +61,7 @@
             <td class="col-md-3"><span>Disponível</span></td>
             <td class="col-md-3">
                 <div style="padding-top: 5px">
-                <button class="btn btn-info"><span class="glyphicon glyphicon-eye-open"></span></button>
+                <button class="btn btn-info" onclick="getDetalhe(this)" rel="{{ $filme->int_filme_id }}"  data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-eye-open"></span></button>
                 <a href="/admin/add/movie/{{ $filme->int_filme_id }}" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>
                 <a href="/admin/delete/{{ $filme->int_filme_id }}" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
                 </div>
@@ -72,4 +72,23 @@
     </table>
     </div>
 </section>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Detalhe</h4>
+      </div>
+      <div class="modal-body">
+        <div id="loading-detalhe" class="col-md-12 off"><img class="img-responsive" src="/img/spinner.gif" alt="carregando..." titulo="carregando..."></div>
+        <div id="detalhe"></div>
+      </div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
 @endsection()

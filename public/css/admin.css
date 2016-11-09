@@ -24,3 +24,4 @@ h1,h2,h3,h4,h5,h6{font-size: 1em;}
 .tbody div{text-align: center;}
 .h-td{position:relative;height:100px;}
 .thumb{width: 80px;height: 100px;}
+.modal-backdrop{z-index: 9999999 !important;}

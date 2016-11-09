@@ -62,7 +62,6 @@
             <td class="col-md-3">
                 <div style="padding-top: 5px">
                 <button class="btn btn-info"><span class="glyphicon glyphicon-eye-open"></span></button>
-                <a href="/admin/add/movie/{{ $user->id }}" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>
                 <a href="/admin/delete/{{ $user->id }}" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
                 </div>
             </td>
