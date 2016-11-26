@@ -38,38 +38,32 @@
     </div>
     <div class="container m-top-15">
         <div class="col col-md-2">
-            <a href="/admin/add/movie" class="btn btn-success btn-block">Adicionar Filme <span class="glyphicon glyphicon-plus"></span></a>
+            <h1 style="font-size: 16pt;"><span class="glyphicon glyphicon-facetime-video"></span> Meus Filmes</h1>
         </div>
     </div>
 </header>
 <section>
     <div class="col col-md-9 col-md-offset-1">
-    <table class="table">
-        <thead class="bg-tb">
+        <table class="table">
+            <thead class="bg-tb">
             <tr class="">
-                    <th class="col-md-4">Filme</th>
-                    <th class="col-md-3">Categoria</th>
-                    <th class="col-md-3">Ano</th>
-                    <th class="col-md-3">Ação</th>
+                <th class="col-md-6">Filme</th>
+                <th class="col-md-1">Assistir</th>
             </tr>
-        </thead>
-    <tbody class="table-striped">
-@foreach($filmes as $filme)
-        <tr class="">
-            <td class="col-md-4"><span>{{ $filme->str_titulo_filme }}</span></td>
-            <td class="col-md-3"><span>{{ $filme->str_nome_categoria }}</span></td>
-            <td class="col-md-3"><span>{{ $filme->int_ano }}</span></td>
-            <td class="col-md-3">
-                <div style="padding-top: 5px">
-                <button class="btn btn-info" onclick="getDetalhe(this)" rel="{{ $filme->int_filme_id }}"  data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-eye-open"></span></button>
-                <a href="/admin/add/movie/{{ $filme->int_filme_id }}" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>
-                <a href="/admin/delete/{{ $filme->int_filme_id }}" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
-                </div>
-            </td>
-        </tr>
-@endforeach
-    </tbody>
-    </table>
+            </thead>
+            <tbody class="table-striped">
+            @foreach($alugados as $alugado)
+                <tr class="">
+                    <td class="col-md-6"><span>{{ $alugado->str_titulo_filme }}</span></td>
+                    <td class="col-md-1">
+                        <div style="padding-top: 5px">
+                            <button class="btn btn-success btn-block" onclick="getDetalhe(this)" rel="{{ $alugado->int_filme_id }}"  data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-facetime-video"></span></button>
+                        </div>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
     </div>
 </section>
 <!-- Modal -->

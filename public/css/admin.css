@@ -8,7 +8,8 @@ h1,h2,h3,h4,h5,h6{font-size: 1em;}
 .text-center{text-align: center;color: #fff;}
 .hr{padding: 0;margin: 0 auto;width: 50%;}
 .menu .menu-item{text-align: center;color: #fff;font-weight: bold;cursor: pointer;padding: 10px;}
-.menu-item:hover{background-color: #0c7696;}
+.menu .menu-item a span{font-size: 16pt;}
+.menu-item a:hover{color: #0c7696;}
 .sub-filmes,.sub-cliente{display: none;text-align: center;color: #fff;background-color: #0c7696;}
 .sub-item{padding: 5px;font-family: arial;cursor: pointer;}
 .sub-item:hover{color: #173d70;}

@@ -72,7 +72,8 @@ function getDetalhe(obj) {
 			var detalhe = document.getElementById('detalhe');
 			$('#loading-detalhe').fadeOut(300);
 			for (var i = 0; i < response.length; i++) {
-				detalhe.innerHTML += '<div class="row"><div class="col col-md-4"><img src="/uploads/'+response[i].thumbnail+'" alt="" class="img-responsive"></div><div class="col col-md-8"><h2>'+response[i].str_titulo_filme+'</h2><p>'+response[i].txt_sinopse_filme+'</p><ul><li>'+response[i].int_categoria_id+'</li><li>2015</li></ul></di></div>';
+				detalhe.innerHTML += '<div class="row"><div class="col col-md-4"><img src="/uploads/'+response[i].thumbnail+'" alt="" class="img-responsive"></div><div class="col col-md-8"><h2>'+response[i].str_titulo_filme+'</h2><p>'+response[i].txt_sinopse_filme+'</p><ul><li>'+response[i].str_nome_categoria+'</li><li>'+response[i].int_ano+'</li></ul></di></div>';
+				$('.btn-success').attr('href','/admin/my-film?tmp='+response[i].int_filme_id);
 			};
 		},
 		error: function(e) {

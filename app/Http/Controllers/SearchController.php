@@ -19,8 +19,10 @@ class SearchController extends Controller
             $sql = "select * from filme where str_titulo_filme like ':s%'";
             $filmes = DB::select(DB::Raw($sql),['s'=>$s]);
     	}
+    	$sql = "select thumbnail,int_filme_id from filme order by int_filme_id desc limit 5";
+    	$lancamento = DB::select(DB::Raw($sql),[]);
 
-    	return view('index',compact('filmes'));
+    	return view('index',compact('filmes','lancamento'));
     }
     public function getSearch(Request $request)
     {
@@ -49,7 +51,11 @@ class SearchController extends Controller
         $filmes = [];
         $filmesArray = [];
 
-            $sql = "select * from filme where int_filme_id = :id";
+            $sql = "select f.*,c.str_nome_categoria,c.int_categoria_id,a.id_anexo,a.anexo from filme_anexo fa 
+                    inner join anexo a on a.id_anexo = fa.id_anexo
+                    inner join filme f on f.int_filme_id = fa.id_filme
+                    inner join categoria c on c.int_categoria_id = f.int_categoria_id 
+                    where fa.id_filme = :id";
             $filmes = DB::Select(DB::Raw($sql), ['id' => $id]);
 
             foreach ($filmes as $filme) {

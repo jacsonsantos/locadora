@@ -14,11 +14,14 @@
         <header class="bg-blue">
             <div class="container">
                 <div class="row">
+                    <div class="col-md-2 m-top-10">
+                        <a href="/" style="font-size: 16pt;text-decoration: none;color: #d62728;">LocaFilms</a>
+                    </div>
                     <form action="" class="form-search" onsubmit="return false" id="form-search" name="form-search">
-                        <div class="col col-md-8 col-md-offset-2">
+                        <div class="col col-md-8">
                             <input type="search" name="s" class="form-control s m-top-10" placeholder="Pesquisar Filme ou Ator [Tecle Enter]">
                         </div>
-                        <a href="/admin" class="btn m-top-10 text-white"><span class="glyphicon glyphicon-log-in"></span> Acesso Administrativo</a>
+                        <a href="/admin" class="btn m-top-10 text-white">Entrar <span class="glyphicon glyphicon-log-in"></span></a>
                     </form>
                 </div>
             </div>
@@ -66,49 +69,29 @@
 <div class="jumbotron">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-6 col-md-2 img-destaque col-md-offset-1">
-                <a href="#">
-                    <img src="/uploads/e43132d7911ad99c960f0ed2832e137e.jpeg" alt="" class="img-circle">
-                    <span class="value-destaque">R$9,99</span>
+            <div class="col-md-offset-1">
+            @foreach($lancamento as $lanca)
+            <div class="col-xs-6 col-md-2 img-destaque">
+                <a data-toggle="modal" data-target="#myModal" rel="{{$lanca->int_filme_id}}" onclick="getDetalhe(this)">
+                    <img src="/uploads/{{ $lanca->thumbnail }}" alt="" class="img-circle">
+                    {{--<span class="value-destaque">R$9,99</span>--}}
                 </a>
             </div>
-            <div class="col-xs-6 col-md-2 img-destaque">
-                <a href="#">
-                    <img src="/uploads/e43132d7911ad99c960f0ed2832e137e.jpeg" alt="" class="img-circle">
-                    <span class="value-destaque">R$9,99</span>
-                </a>
-            </div>
-            <div class="col-xs-6 col-md-2 img-destaque">
-                <a href="#">
-                    <img src="/uploads/e43132d7911ad99c960f0ed2832e137e.jpeg" alt="" class="img-circle">
-                    <span class="value-destaque">R$9,99</span>
-                </a>
-            </div>
-            <div class="col-xs-6 col-md-2 img-destaque">
-                <a href="#">
-                    <img src="/uploads/e43132d7911ad99c960f0ed2832e137e.jpeg" alt="" class="img-circle">
-                    <span class="value-destaque">R$9,99</span>
-                </a>
-            </div>
-            <div class="col-xs-6 col-md-2 img-destaque">
-                <a href="#">
-                    <img src="/uploads/e43132d7911ad99c960f0ed2832e137e.jpeg" alt="" class="img-circle">
-                    <span class="value-destaque">R$9,99</span>
-                </a>
+            @endforeach
             </div>
         </div>
     </div>
 </div>
 <section class="container-fluid">
     <div class="row">
-        <div class="col col-xs-12 col-md-2">
-            <div class="row">
-                <h2 style="margin-left:5px;"><strong>Categorias</strong></h2>
-                <div id="loading" class="col-md-12 off"><img class="img-responsive" src="/img/spinner.gif" alt="carregando..." titulo="carregando..."></div>
-                <div id="categorias"></div>
-            </div>
-        </div>
-        <div class="col col-xs-12 col-md-9">
+        {{--<div class="col col-xs-12 col-md-2">--}}
+            {{--<div class="row">--}}
+                {{--<h2 style="margin-left:5px;"><strong>Categorias</strong></h2>--}}
+                {{--<div id="loading" class="col-md-12 off"><img class="img-responsive" src="/img/spinner.gif" alt="carregando..." titulo="carregando..."></div>--}}
+                {{--<div id="categorias"></div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+        <div class="col col-xs-12 col-md-9 col-md-offset-2">
             <div class="row">
                 <div id="loading-search" class="col-md-12 off"><img class="img-responsive" src="/img/spinner.gif" alt="carregando..." titulo="carregando..."></div>
                 <div id="search-content"></div>
@@ -130,7 +113,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-success">Gerar Ingresso</button>
+        <a href="#" type="button" class="btn btn-success">Alugar</a>
       </div>
     </div>
   </div>

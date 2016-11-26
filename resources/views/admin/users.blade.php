@@ -23,10 +23,10 @@
             <div class="col col-md-4">
                 <label for="Categoria">Acesso:</label>
                 <select name="filter_categoria" id="" class="form-control">
-                    <option value="">Selecione um nivel</option>
-                    {{--@foreach($categorias as $categoria)--}}
-                        {{--<option value="{{ $categoria->int_categoria_id }}">{{ $categoria->str_nome_categoria }}</option>--}}
-                    {{--@endforeach--}}
+                    <option value="">Selecione um Nivel de Acesso...</option>
+                    <option value="1">Administrador</option>
+                    <option value="2">Normal</option>
+                    <option value="3">Cliente</option>
                 </select>
             </div>
             <div class="col col-md-2">
@@ -58,11 +58,17 @@
         <tr class="">
             <td class="col-md-4"><span>{{ $user->name }}</span></td>
             <td class="col-md-3"><span>{{ $user->email }}</span></td>
-            <td class="col-md-3"><span>Nivel</span></td>
+            @if($user->int_acesso == '1')
+                <td class="col-md-3"><span>Administrador</span></td>@endif
+            @if($user->int_acesso == '2')
+                    <td class="col-md-3"><span>Normal</span></td>@endif
+            @if($user->int_acesso == '3')
+                    <td class="col-md-3"><span>Cliente</span></td>@endif
+
             <td class="col-md-3">
                 <div style="padding-top: 5px">
                 <button class="btn btn-info"><span class="glyphicon glyphicon-eye-open"></span></button>
-                <a href="/admin/delete/{{ $user->id }}" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                <a href="/admin/delete/user/{{ $user->id }}" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
                 </div>
             </td>
         </tr>
